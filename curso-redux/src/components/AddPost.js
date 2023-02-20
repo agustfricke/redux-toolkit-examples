@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postAdded } from "../features/postsSlice";
-import { selectAllUsers } from "../features/usersSlice";
 
+import { postAdded } from "../features/posts/postsSlice";
+import { selectAllUsers } from "../features/users/usersSlice";
 
 const AddPost = () => {
 
     const dispatch = useDispatch();
-
+    
     const [title, setTitle] = useState('');
     const [userId, setUserId] = useState('');
-    
+
     const users = useSelector(selectAllUsers);
 
-    const handleSubmit = () => {
+    const handleSave = () => {
         if (title) {
             dispatch(
                 postAdded(title, userId)
@@ -21,6 +21,7 @@ const AddPost = () => {
             setTitle('')
         }
     }
+
     return (
         <div className="flex justify-center">
             <form className="mt-3">
@@ -41,11 +42,12 @@ const AddPost = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}/>
                 <button 
+                onClick={handleSave}
                 className="bg-white text-black p-2 rounded-lg"
-                onClick={handleSubmit} 
                 type="button">Create</button>
             </form>
         </div>
     )
 }
+
 export default AddPost;
