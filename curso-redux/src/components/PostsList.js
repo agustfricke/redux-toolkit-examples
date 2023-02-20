@@ -8,19 +8,29 @@
 
 import { useSelector } from "react-redux";
 import { selectAllPosts } from "../features/postsSlice";
+import PostAuthor from "./PostAuthor";
+
 
 const PostsList = () => {
 
     const posts = useSelector(selectAllPosts);
+    
 
     return (
-        <div>
+        <div className="flex justify-center">
+            <div>
             {posts.map(post => (
+                
                 <div key={post.id}>
+                    
+            <div className="bg-gray-300 m-4 rounded-lg p-3">
                     <p>{post.title}</p>
+                    <PostAuthor userId={post.userId}/>
+                </div>
                 </div>
             ))}
-        </div>
+             </div> 
+             </div> 
     );
 };
 export default PostsList;
