@@ -47,5 +47,14 @@ export const selectAllBlogs = (state) => state.blogs.blogs;
 export const getBlogsStatus = (state) => state.blogs.status;
 export const getBlogError = (state) => state.blogs.error;
 
+// Get the id of the blogs 
+export const selectBlogById = (state, blogId) => 
+    state.blogs.blogs.find(blog => blog.id === blogId);
+
 
 export default blogsSlice.reducer;
+
+
+
+
+
