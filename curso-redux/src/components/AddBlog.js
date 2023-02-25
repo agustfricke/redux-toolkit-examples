@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addNewBlog } from "../features/blogsSlice";
+import { useNavigate } from "react-router-dom";
 
 const AddBlog = () => {
 
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const [body, setBody] = useState('');
     const [addRequestStatus, setAddRequestStatus] = useState('idle');
@@ -15,6 +18,7 @@ const AddBlog = () => {
                 setAddRequestStatus('pending')
                 dispatch(addNewBlog({body}))
                 setBody('')
+                navigate('/')
             } catch (err) {
                 console.log('Error', err)
             } finally {

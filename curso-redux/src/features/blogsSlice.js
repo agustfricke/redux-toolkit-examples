@@ -20,6 +20,27 @@ export const addNewBlog = createAsyncThunk('blogs/addNewBlog', async (initialBlo
     return response.data
 })
 
+export const updateBlog = createAsyncThunk('blogs/updateBlog', async (initialBlog) => {
+    const { id } = initialBlog;
+    try {
+        const response = await axios.put(`${URL}/put/${id}/`, initialBlog)
+        return response.data
+    } catch (err) {
+        return err.message;
+    }
+})
+
+export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (initialBlog) => {
+    const { id } = initialBlog;
+    try {
+        const response = await axios.delete(`${URL}/delete/${id}/`,initialBlog)
+        if (response?.status === 200) return initialBlog;
+        return `${response?.status}: ${response?.statusText}`
+    } catch (err) {
+        return err.message
+    }
+})
+
 const blogsSlice = createSlice({
     name: 'blogs',
     initialState,
@@ -39,6 +60,26 @@ const blogsSlice = createSlice({
         })
         .addCase(addNewBlog.fulfilled, (state, action) => {
             state.blogs.push(action.payload)
+        })
+        .addCase(updateBlog.fulfilled, (state, action) => {
+            if (!action.payload?.id) {
+                console.log('Update cant be completed!')
+                console.log(action.payload)
+                return;
+            }
+            const { id } = action.payload;
+            const blogs = state.blogs.filter(blog => blog.id !== id);
+            state.blogs = [...blogs, action.payload];
+        })
+        .addCase(deleteBlog.fulfilled, (state, action) => {
+            if (!action.payload?.id) {
+                console.log('Delete could not complete')
+                console.log(action.payload)
+                return;
+            }
+            const { id } = action.payload;
+            const blogs = state.blogs.filter(blog => blog.id !== id);
+            state.blogs = blogs;
         })
     }
 })
