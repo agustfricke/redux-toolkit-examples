@@ -1,0 +1,3 @@
+1- Prepare callback
+2- Redux DevTools
+3- UserSlice con el selectAllUsers y se importa al store 
