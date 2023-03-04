@@ -1,0 +1,17 @@
+1- Devtools -> profiler -> click en rec y presionar buttons
+2- Como podemos ver cada vez que clickeo en like este los posts se vuelven a renderizar
+cuando el emohi es solo para el primer post
+Hoy vamos a arrgelar eso y vamos a hacer otras optimizaciones
+3- Hoy vamos a crear algunas funcionalidades mas para mostrarles mejor como funcionan estaas optimizaciones
+5- userList.js
+6- crear el select user by id en usersSlice
+7- UserPage 
+8-  Import todo a app
+7- Poner el naviage a home pgo o 404
+8- Header => user link
+9- Test
+
+10- Notificaciones en postsSlice
+11- Header Contado
+
+12- Como vemos el cada vez que ponemos elc ontador este renderiza tambien el userPasge

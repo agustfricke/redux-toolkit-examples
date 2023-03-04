@@ -12,3 +12,4 @@
 10- Test
 11- Delete action
 12- Delete action on EditPost
+13- Ponemos el fetchPosts en index.js

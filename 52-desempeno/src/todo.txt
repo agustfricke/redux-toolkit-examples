@@ -1,0 +1,31 @@
+1- Cambiar el memo en PostExerpt
+"Normalized state" means that:
+
+"Estado normalizado" significa que:
+
+Solo tenemos una copia de cada dato en particular en nuestro estado, por lo que no hay duplicación
+Los datos que se han normalizado se mantienen en una tabla de búsqueda, donde los ID de los elementos son las claves y los elementos mismos son los valores.
+También puede haber una matriz de todos los ID para un tipo de artículo en particular
+Los objetos de JavaScript se pueden usar como tablas de búsqueda, similares a "mapas" o "diccionarios" en otros idiomas. 
+Así es como se vería el estado normalizado de un grupo de objetos de usuario:
+
+{
+  users: {
+    ids: ["user1", "user2", "user3"],
+    entities: {
+      "user1": {id: "user1", firstName, lastName},
+      "user2": {id: "user2", firstName, lastName},
+      "user3": {id: "user3", firstName, lastName},
+    }
+  }
+}
+
+Esto facilita la búsqueda de un objeto de usuario en particular por su ID, sin tener que recorrer todos los demás objetos de usuario en un arreglo:
+
+const userId = 'user2'
+const userObject = state.users.entities[userId]
+
+3- PostsSlice
+4- Cambiar el state.postys.posts por state.entienes
+5- Hacer los exports de selectAllPosts y selectPostByid
+6- PostsList 
