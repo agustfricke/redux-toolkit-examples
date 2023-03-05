@@ -1,7 +1,11 @@
-import TodoList from "./features/todos/TodoList";
+import Tasks from "./components/Tasks";
 
-function App() {
-  return <TodoList />
-}
+const App = () => {
+  return (
+    <>
+      <Tasks/>
+    </>
+  );
+};
 
 export default App;
