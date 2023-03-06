@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "body": "hola test"
+    },
+    {
+      "body": "hola como estas?",
+      "id": 2
+    },
+    {
+      "body": "hola",
+      "id": 3
+    },
+    {
+      "body": "hola",
+      "id": 4
+    },
+    {
+      "body": "chau ddd",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "body": "chau test funciona?"
+    },
+    {
+      "id": 7,
+      "body": "hola funciona y terminado!!!"
+    }
+  ]
+}
