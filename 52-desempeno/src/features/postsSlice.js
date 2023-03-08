@@ -137,12 +137,12 @@ const postsSlice = createSlice({
     }
 })
 
-//getSelectors creates these selectors and we rename them with aliases using destructuring
+// el getSelectors crea estos selectors y nosotros los podemos renombrar
 export const {
     selectAll: selectAllPosts,
     selectById: selectPostById,
-    selectIds: selectPostIds
-    // Pass in a selector that returns the posts slice of state
+    selectIds: selectPostIds  // pasamos el estado normalizado
+    // pasamos el selector que retorna el state de post slice
 } = postsAdapter.getSelectors(state => state.posts)
 
 // Eliminar esta linea

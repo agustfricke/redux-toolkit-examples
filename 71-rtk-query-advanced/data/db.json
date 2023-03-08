@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "Tech con Agust"
+    },
+    {
+      "id": 1,
+      "name": "John Doe"
+    },
+    {
+      "id": 2,
+      "name": "Agustin"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "body": "hola test"
+    },
+    {
+      "body": "hola como estas?",
+      "id": 2
+    },
+    {
+      "body": "hola",
+      "id": 3
+    },
+    {
+      "body": "hola",
+      "id": 4
+    },
+    {
+      "body": "chau ddd",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "body": "chau test funciona?"
+    },
+    {
+      "id": 7,
+      "body": "hola funciona y terminado!!!"
+    },
+    {
+      "body": "dfdfdf",
+      "userId": "1",
+      "id": 8
+    },
+    {
+      "id": 9,
+      "body": "hola hola"
+    }
+  ]
+}

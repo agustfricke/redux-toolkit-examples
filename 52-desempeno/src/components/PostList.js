@@ -10,7 +10,7 @@ const PostList = () => {
     const dispatch = useDispatch();
     
     // Cambiamos esto
-    const orderedPostIds = useSelector(selectPostIds);
+    const orderedPostIds = useSelector(selectPostIds); // pasamos el estado normalizado
     const postStatus = useSelector(getPostsStatus);
     const error = useSelector(getPostsError);
 
