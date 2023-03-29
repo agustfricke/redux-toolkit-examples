@@ -1,3 +1,0 @@
-1- Poner userId en postAdded
-2- Poner el selct user in AddPost.js
-3- PostAuthor component

@@ -1,9 +1,0 @@
-1- Ir a userPage component
-2- Ir al postsSlice
-3- Update UserPage 
-4- Test en Profiler
-
-5- cada vez que le doy like se renderiza el PostList y cada postexcerpt
-6- PostExeprtp memo y check profiler
-
-

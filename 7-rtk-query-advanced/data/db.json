@@ -1,4 +1,18 @@
 {
+  "users": [
+    {
+      "id": 0,
+      "name": "Tech con Agust"
+    },
+    {
+      "id": 1,
+      "name": "John Doe"
+    },
+    {
+      "id": 2,
+      "name": "Agustin"
+    }
+  ],
   "posts": [
     {
       "id": 1,
@@ -27,6 +41,15 @@
     {
       "id": 7,
       "body": "hola funciona y terminado!!!"
+    },
+    {
+      "body": "dfdfdf",
+      "userId": "1",
+      "id": 8
+    },
+    {
+      "id": 9,
+      "body": "hola hola"
     }
   ]
 }

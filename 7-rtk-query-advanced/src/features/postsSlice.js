@@ -64,11 +64,28 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
             invalidatesTags: (result, error, arg) => [
                 { type: 'Post', id: arg.id }
             ]
+        }), 
+        // create
+        getPostsByUserId: builder.query({
+            query: id => `posts/?userId=${id}`,
+            transformResponse: responseData => {
+                let min  = 1;
+                const loadedPosts = responseData.map( post => {
+                    if (!post.date) post.date = sub(new Date(), { minutes: min ++ }).toISOString()
+                    return post
+                })
+                return postsAdapter.setAll(initialState, loadedPosts)
+            },
+            providesTags: (result, error, arg) => [
+                ...result.ids.map(id => ({ type: 'Post', id })) 
+            ]
         })
     })
 });
 
 export const { 
+    // export
+    useGetPostsByUserIdQuery,
     useUpdatePostMutation,
     useDeletePostMutation,
     useAddNewPostMutation,

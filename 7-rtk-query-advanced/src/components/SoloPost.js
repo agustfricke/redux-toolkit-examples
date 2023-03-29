@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { selectPostById } from "../features/postsSlice";
 import TimeAgo from "./TimeAgo";
 import { useParams, Link } from "react-router-dom";
+import PostAuthor from "./PostAuthor";
 
 const SoloPost = () => {
 
@@ -19,8 +20,13 @@ const SoloPost = () => {
 
     return (
         <div>
-            <h2> { post.title } </h2>
-            <p> { post.body } </p>
+            <h2> { post.body } </h2>
+                <br/> 
+                <TimeAgo timestamp={post.date} />
+                <br/>
+                <PostAuthor userId={post.userId}/>
+                <br/>
+                <Link to={`/post/edit/${post.id}`}>Edit Post</Link>
             <TimeAgo timestamp={post.date}/>
         </div>
     )
