@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewPost } from "../features/postsSlice";
 import { selectAllUsers } from "../features/usersSlice";
-// Redirijimos a home
 import { useNavigate } from "react-router-dom";
 
 const AddPost = () => {

@@ -38,7 +38,6 @@ const EditPost = () => {
         if (canSave) {
             try {
                 setRequestStatus('pending')
-                // Agregamos mas cosas ya que la fake api no tiene ni reacciones ni fecha
                 dispatch(updatePost({ id: post.id, title, body: content, userId, reactions: post.reactions })).unwrap()
 
                 setTitle('')

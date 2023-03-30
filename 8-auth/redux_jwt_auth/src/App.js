@@ -4,7 +4,6 @@ import Public from './components/Public'
 import Login from './features/auth/Login'
 import Welcome from './features/auth/Welcome'
 import RequireAuth from './features/auth/RequireAuth'
-// todo menos esto
 import UsersList from './features/users/UsersList'
 
 function App() {

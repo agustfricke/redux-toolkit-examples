@@ -1,6 +1,0 @@
-1- initalState & change state.posts.posts
-2- Creamos PostExcept
-3- Hacemos el PostList con el action
-4- Traemos los usuarios de la api
-5- Poner los usuarios en el index.js 
-6- Crear publicaciones

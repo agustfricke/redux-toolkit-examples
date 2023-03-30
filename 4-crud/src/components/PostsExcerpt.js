@@ -9,7 +9,7 @@ const PostsExcerpt = ({ post }) => {
         <div>
             <h3>{post.title}</h3>
             <p>{post.body}</p>
-            <p className="postCredit">
+            <p>
                 <PostAuthor userId={post.userId} />
                 <TimeAgo timestamp={post.date} />
                 <Link to={`post/${post.id}`}>See more</Link>

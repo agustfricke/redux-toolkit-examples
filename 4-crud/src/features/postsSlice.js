@@ -20,7 +20,6 @@ export const addNewPost = createAsyncThunk('posts/addNewPost', async (initialPos
     return response.data
 })
 
-// Estamos descructurando y obtenidendo el id desde ese initialPost porque neseitamos el id en la url
 export const updatePost = createAsyncThunk('posts/updatePost', async (initialPost) => {
     const { id } = initialPost;
     try {
@@ -31,15 +30,11 @@ export const updatePost = createAsyncThunk('posts/updatePost', async (initialPos
     }
 })
 
-// Seguimos reciviendo el initialPost y descructuramos el id
 export const deletePost = createAsyncThunk('posts/deletePost', async (initialPost) => {
     const { id } = initialPost;
     try {
         const response = await axios.delete(`${POSTS_URL}/${id}`)
-        // Esto es por nuestra fake api, ya que jsonplaceholder no manda devuelta el id
-        // asi que aca checkiamos si el estatus es 200, y si es asi devolvemos el initialPost para poder agarrar el id
         if (response?.status === 200) return initialPost;
-        // Si el estatos no es 200 vamos a mandar un msj con el estatus que sea
         return `${response?.status}: ${response?.statusText}`;
     } catch (err) {
         return err.message;
@@ -118,37 +113,24 @@ const postsSlice = createSlice({
                 state.posts.push(action.payload)
             })
             .addCase(updatePost.fulfilled, (state, action) => {
-                // aqui estamos recibiendo informacion con el action payload
-                // pero basicamente podriamos tener un put request con estados 200 de exitoso
-                // cuando en realidad no es exitoso entonces nos queremos asegurar que el 
-                // post se halla actualizado, 
-                // Basicamente si el payload no treae el id, vamos a poner losiguiente por consola
                 if (!action.payload?.id) {
                     console.log('Update could not complete')
                     console.log(action.payload)
                     return;
                 }
-                // Si todo va bien descontruimos el id del action.payload
                 const { id } = action.payload;
-                // Le ponemos una nueva fecha
                 action.payload.date = new Date().toISOString();
-                // Y aca filtramos el post con el mismo id
                 const posts = state.posts.filter(post => post.id !== id);
-                // y despues actualizamos el estado con todos los posts y con el post actualizado
                 state.posts = [...posts, action.payload];
             })
             .addCase(deletePost.fulfilled, (state, action) => {
-                // Esto es lo mismo que teniamos en el delete
                 if (!action.payload?.id) {
                     console.log('Delete could not complete')
                     console.log(action.payload)
                     return;
                 }
-                // descructurando el id
                 const { id } = action.payload;
-                // Filtramos el post que eliminamos
                 const posts = state.posts.filter(post => post.id !== id);
-                // Actualizamos el estado sin el post que eliminamos
                 state.posts = posts;
             })
     }
@@ -158,7 +140,6 @@ export const selectAllPosts = (state) => state.posts.posts;
 export const getPostsStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
 
-// Solo blog
 export const selectPostById = (state, postId) => state.posts.posts.find(post => post.id === postId);
 
 export const { postAdded, reactionAdded } = postsSlice.actions

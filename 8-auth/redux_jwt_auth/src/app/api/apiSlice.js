@@ -6,7 +6,7 @@ import { setCredentials, logOut } from '../../features/auth/authSlice'
 // creamos el baseQuery que es como un axios basicamente 
 const baseQuery = fetchBaseQuery({
     // Ruta basica
-    baseUrl: 'http://localhost:3500',
+    baseUrl: 'http://127.0.0.1:8000',
     // eso va a mandar nuestra http only cookie 
     credentials: 'include',
     // descrucuramos el getSttae
@@ -33,7 +33,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
        if (result?.error?.originalStatus === 403) {
         console.log('sending refresh token')
         // send refresh token to get new access token 
-        const refreshResult = await baseQuery('/refresh', api, extraOptions)
+        const refreshResult = await baseQuery('auth/token/refresh/', api, extraOptions)
         console.log(refreshResult)
            // ponemos el user que deberia estar en nuestro estado 
         if (refreshResult?.data) {

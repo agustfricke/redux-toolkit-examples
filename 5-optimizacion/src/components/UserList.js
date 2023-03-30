@@ -1,4 +1,3 @@
-// Renderizamos todos los usuarios 
 import { useSelector } from 'react-redux'
 import { selectAllUsers } from "../features/usersSlice";
 import { Link } from 'react-router-dom'

@@ -1,9 +1,0 @@
-1- agregar tag type apiSlice
-2- usersSlice 
-3- index.js
-4- AddPost - users
-5- PostAuthor
-6- PostExerpt
-7- Test
-8- SoloUser -> app.js
-9- getPostsByuserId -> postsSlice

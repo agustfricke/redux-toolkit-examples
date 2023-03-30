@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { selectAllPosts } from "../features/postsSlice";
 import PostAuthor from "./PostAuthor";
 import TimeAgo from "./TimeAgo";
-// Importamos y le pasamos el post como prop
 import ReactionButtons from "./ReactionButtons";
 
 const PostList = () => {

@@ -1,18 +1,13 @@
-// Aqui importamos el createEntityAdapter 
 import { createSlice, createAsyncThunk, createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { sub } from 'date-fns';
 import axios from "axios";
 
 const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts';
 
-// aqui tenemos el postsAdapter que podemos poner un sortComparer que basicamente estamos comparando aquien el slice 
-// y no en el compnente donde tenemos la compracion por fecha
 const postsAdapter = createEntityAdapter({
     sortComparer: (a, b) => b.date.localeCompare(a.date)
 })
 
-// Aqui le pasamos el postsAdapter al initialState y fijate que elimine el array vacio de posts porque
-// nuestro initialState ya va a devolver ese estado normalizado con el array de los ids
 const initialState = postsAdapter.getInitialState({
     status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed'
     error: null,
@@ -56,8 +51,7 @@ const postsSlice = createSlice({
     reducers: {
         reactionAdded(state, action) {
             const { postId, reaction } = action.payload
-            // Aqui!
-            const existingPost = state.entities[postId] // pasamos el postId porque lo pasamois como un Objecto lookup
+            const existingPost = state.entities[postId] 
             if (existingPost) {
                 existingPost.reactions[reaction]++
             }
@@ -83,8 +77,6 @@ const postsSlice = createSlice({
                     return post;
                 });
 
-                // Aqui!!
-                // Este postsAdapter tiene sus propios metodos CRUD
                 postsAdapter.upsertMany(state, loadedPosts)
             })
             .addCase(fetchPosts.rejected, (state, action) => {
@@ -105,7 +97,6 @@ const postsSlice = createSlice({
                     unlike:0
                 }
                 console.log(action.payload)
-                // Aqui!
                 postsAdapter.addOne(state, action.payload)
             })
             .addCase(updatePost.fulfilled, (state, action) => {
@@ -114,12 +105,7 @@ const postsSlice = createSlice({
                     console.log(action.payload)
                     return;
                 }
-                //Esta linea tampoco!!!!!
-                //const { id } = action.payload;
                 action.payload.date = new Date().toISOString();
-                // sacar Linea de abajo!!!!!
-                // const posts = state.filter(post => post.id !== id);
-                // aqui!!
                 postsAdapter.upsertOne(state, action.payload)
             })
             .addCase(deletePost.fulfilled, (state, action) => {
@@ -129,29 +115,20 @@ const postsSlice = createSlice({
                     return;
                 }
                 const { id } = action.payload;
-                // Sacar linea de abajo!!!!
-                // const posts = state.filter(post => post.id !== id);
-                // Aqui!!
                 postsAdapter.removeOne(state, id)
             })
     }
 })
 
-// el getSelectors crea estos selectors y nosotros los podemos renombrar
 export const {
     selectAll: selectAllPosts,
     selectById: selectPostById,
-    selectIds: selectPostIds  // pasamos el estado normalizado
-    // pasamos el selector que retorna el state de post slice
+    selectIds: selectPostIds  
 } = postsAdapter.getSelectors(state => state.posts)
 
-// Eliminar esta linea
-// export const selectAllPosts = (state) => state.posts.posts;
 export const getPostsStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
 
-// Eliminar esta linea
-// export const selectPostById = (state, postId) => state.posts.posts.find(post => post.id === postId);
 
 export const selectPostsByUser = createSelector(
     [selectAllPosts, (state, userId) => userId],

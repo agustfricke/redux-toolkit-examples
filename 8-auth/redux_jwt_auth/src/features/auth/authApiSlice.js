@@ -1,13 +1,10 @@
-// importamos el apoSlice
 import { apiSlice } from "../../app/api/apiSlice";
 
-// Exportamos el authApiSlice donde inyectamos los endpoit
 export const authApiSlice = apiSlice.injectEndpoints({
-    // Aqui defimos nuestros endpotins
     endpoints: builder => ({
         login: builder.mutation({
             query: credentials => ({
-                url: '/auth',
+                url: '/auth/token/',
                 method: 'POST',
                 body: { ...credentials }
             })
@@ -15,7 +12,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-// Exportamos
 export const {
     useLoginMutation
 } = authApiSlice

@@ -1,9 +1,0 @@
-1- Creacion de proyecto
-2- Instalar Redux Toolkit
-3- Configurar store y couterSlice
-4- Crear la carpeta features y el archivo couterSlice
-5- Crear Slice e importarlo al store
-6- Crear el componente Counter.js
-7- Importar a App.js  y testear
-8- Crear actions de reset y aumentar por cantidad
-

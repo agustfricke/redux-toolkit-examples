@@ -2,7 +2,6 @@ import PostAuthor from "./PostAuthor";
 import TimeAgo from "./TimeAgo";
 import ReactionButtons from "./ReactionButtons";
 
-// Pasamos el post como prop y cambiamos el content por body
 const PostsExcerpt = ({ post }) => {
     return (
         <div>

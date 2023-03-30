@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// Importamos el nuevo action
 import { addNewPost } from "../features/postsSlice";
 import { selectAllUsers } from "../features/usersSlice";
 
@@ -11,34 +10,25 @@ const AddPost = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [userId, setUserId] = useState('');
-    // Extra useState
     const [addRequestStatus, setAddRequestStatus] = useState('idle');
 
     const onTitleChange = e => setTitle(e.target.value);
     const onContentChange = e => setContent(e.target.value);
     const onUserIdChange = e => setUserId(e.target.value);
 
-    // Ponemos ese can save
     const canSave = [title, content, userId].every(Boolean) && addRequestStatus === 'idle';
 
     const onSavePost = () => {
-        // verificamos si esta todo ok
         if (canSave) {
             try {
-                // Ponemos el status a pending
                 setAddRequestStatus('pending')
-                // Dsespachamos el payload y unwrap que es una funcion de redux toolkit, 
-                // donde devolve una nueva promesa que tiene el action.payload o el error, basicamente nos permite
-                // tener esta logica de try catch error
                 dispatch(addNewPost({ title, body: content,userId })).unwrap()
                 setTitle('')
                 setContent('')
                 setUserId('')
             } catch (err) {
-                // SI haye error
                 console.error('Failed', err)
             } finally {
-                // Siempre volvemos al estado incial
                 setAddRequestStatus('idle')
             }
         }

@@ -1,7 +1,19 @@
-import { Outlet } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
+import { logOut } from "../features/auth/authSlice"
+import { useDispatch } from "react-redux"
 
 const Layout = () => {
-    return <Outlet />
+    const disptach = useDispatch()
+
+    return (
+      <>
+        <Link to="/login">Login</Link>
+        <button onClick={() => disptach(logOut())}>Logout</button>
+
+        <Outlet />
+      </>
+    );
+    
 }
 
 export default Layout

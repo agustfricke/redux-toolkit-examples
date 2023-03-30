@@ -4,7 +4,6 @@ import SoloPost from "./components/SoloBlog";
 import EditPost from "./components/EditPost"; 
 import UsersList from "./components/UserList";
 import UserPage from "./components/UserPage";
-// IMportamos el Layout
 import Layout from "./components/Layout";
 import { Routes, Route, Navigate } from 'react-router-dom';
 

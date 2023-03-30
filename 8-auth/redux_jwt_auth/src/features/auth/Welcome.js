@@ -3,7 +3,6 @@ import { selectCurrentUser, selectCurrentToken } from "./authSlice"
 import { Link } from "react-router-dom"
 
 const Welcome = () => {
-    // Simple welcome para ver todo
     const user = useSelector(selectCurrentUser)
     const token = useSelector(selectCurrentToken)
 
@@ -14,7 +13,7 @@ const Welcome = () => {
         <section className="welcome">
             <h1>{welcome}</h1>
             <p>Token: {tokenAbbr}</p>
-            <p><Link to="/userslist">Go to the Users List</Link></p>
+            <p><Link to="/userslist">Go to the private Route </Link></p>
         </section>
     )
 

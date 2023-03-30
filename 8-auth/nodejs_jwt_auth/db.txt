@@ -1,2 +1,0 @@
-mongodb+srv://agust:<lincon05>@node-auth-jwt.pedvqxw.mongodb.net/auth-jwt?retryWrites=true&w=majority
-
